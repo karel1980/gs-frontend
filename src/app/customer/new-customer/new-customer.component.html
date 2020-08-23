@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="onFormSubmit($event)">
+  <div *appHasAnyRole>
+    <mat-form-field class="example-form-field">
+      <mat-label>Customer name</mat-label>
+      <input matInput type="text" formControlName="name">
+      <button mat-button *ngIf="form.controls.name.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.name.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="mt-1"><input type="submit" value="Create customer"></div>
+</form>

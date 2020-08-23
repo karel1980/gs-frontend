@@ -1,0 +1,14 @@
+{
+  "/api/customer": {
+    "target": "http://localhost:8010",
+    "secure": false
+  },
+  "/api/reference-data": {
+    "target": "http://localhost:8020",
+    "secure": false
+  },
+  "/api/user": {
+    "target": "http://localhost:8030",
+    "secure": false
+  }
+}

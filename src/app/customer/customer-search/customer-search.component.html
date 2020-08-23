@@ -1,0 +1,46 @@
+<section class="mat-typography">
+  <div [formGroup]="form">
+    <mat-form-field class="example-form-field">
+      <mat-label>Customer name</mat-label>
+      <input matInput type="text" formControlName="searchInput">
+      <button mat-button *ngIf="searchInput.value" matSuffix mat-icon-button aria-label="Clear"
+              (click)="searchInput.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="result$ | async as result">
+    <div *ngIf="!loading" class="customer-search-results">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="advisor">
+          <th mat-header-cell *matHeaderCellDef> Advisor</th>
+          <td mat-cell *matCellDef="let element"> Peter Dewolf</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/customer/customer/' + row.id"></tr>
+      </table>
+      <mat-paginator showFirstLastButtons
+                     [hidePageSize]="true"
+                     [length]="result.numPages*3" [pageIndex]="result.page" (page)="onPageChange($event)"
+      ></mat-paginator>
+
+      <div *ngIf="result.customers.length == 0">
+        No customers found
+      </div>
+
+    </div>
+
+    <div *ngIf="loading">
+      Loading...
+    </div>
+  </div>
+
+</section>

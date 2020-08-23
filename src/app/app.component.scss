@@ -1,0 +1,21 @@
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.active-link {
+  text-decoration: underline;
+}
+
+.nav-item {
+  margin: 0.25em;
+  text-decoration: none;
+}
+
+section {
+  padding: 1em;
+}
+
